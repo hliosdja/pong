@@ -11,6 +11,7 @@ const paddleThickness = 20;
 
 let ballSpeedX = 0;
 let ballSpeedY = 0;
+let deltaY;
 
 let playerPaddleY = 200;
 let botPaddleY = paddleHeight / 2;
@@ -50,6 +51,9 @@ moveBall = () => {
     if(ballX > canvas.width - 10){
         if(ballY > botPaddleY && ballY < botPaddleY + paddleHeight){
             ballSpeedX = -ballSpeedX;
+
+            deltaY = ballY - (botPaddleY + paddleHeight / 2);
+            ballSpeedY = deltaY * 0.35;
         } else {
             ballReset();
             scoring();
@@ -59,6 +63,9 @@ moveBall = () => {
     if(ballX < 10){
         if(ballY > playerPaddleY && ballY < playerPaddleY + paddleHeight){
             ballSpeedX = -ballSpeedX;
+
+            deltaY = ballY - (playerPaddleY + paddleHeight / 2);
+            ballSpeedY = deltaY * 0.35;
         } else {
             ballReset();
             scoring();
@@ -140,23 +147,23 @@ bot = () => {
     }
 }
 
-botPlayer = () => {
-    if(ballY > playerPaddleY + (paddleHeight / 2)){
-        if(ballX > (canvas.width / 2)){
-            playerPaddleY += 3;
-        } else {
-            playerPaddleY += 8;
-        }
+// botPlayer = () => {
+//     if(ballY > playerPaddleY + (paddleHeight / 2)){
+//         if(ballX > (canvas.width / 2)){
+//             playerPaddleY += 3;
+//         } else {
+//             playerPaddleY += 8;
+//         }
 
-    }
-    if(ballY < playerPaddleY + (paddleHeight / 2)){
-        if(ballX > (canvas.width / 2)){
-            playerPaddleY -= 2;
-        } else {
-            playerPaddleY -= 6;
-        }
-    }
-}
+//     }
+//     if(ballY < playerPaddleY + (paddleHeight / 2)){
+//         if(ballX > (canvas.width / 2)){
+//             playerPaddleY -= 2;
+//         } else {
+//             playerPaddleY -= 6;
+//         }
+//     }
+// }
  
 //===================================================
 drawRect = (x, y, width, height, color) => {

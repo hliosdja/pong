@@ -21,14 +21,6 @@ body {
   align-items: center;
 }
 
-.wrap {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: -5em;
-}
-
 canvas {
   margin-top: 5em;
 }
